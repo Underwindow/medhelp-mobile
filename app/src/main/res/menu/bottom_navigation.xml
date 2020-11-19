@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_schedule"
+        android:icon="@drawable/ic_baseline_schedule_24"
+        android:title="Приёмы"/>
+    <item
+        android:id="@+id/nav_checklist"
+        android:icon="@drawable/ic_baseline_fact_check_24"
+        android:title="Обследования"/>
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:title="Выход"/>
+
+</menu>
