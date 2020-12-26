@@ -17,6 +17,26 @@
         android:textColor="@color/headers"/>
 
     <EditText
+        android:id="@+id/lastnameEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:textAlignment="center"
+        android:textColor="@color/darkgray"
+        android:inputType="textPersonName"
+        android:hint="@string/input_lastname"/>
+
+    <EditText
+        android:id="@+id/policyNumberEt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="15"
+        android:textAlignment="center"
+        android:textColor="@color/darkgray"
+        android:inputType="numberDecimal"
+        android:hint="@string/input_policy"/>
+
+    <EditText
         android:id="@+id/usernameEt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,28 +64,28 @@
 <!--        android:ems="15"-->
 <!--        android:textAlignment="center"-->
 <!--        android:inputType="textPassword"/>-->
-
     <Button
-        android:id="@+id/signInBtn"
+        android:id="@+id/signUnBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:backgroundTint="@color/links"
-        android:text="@string/signIn" />
+        android:text="@string/signUp"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="или"
+        android:text="уже есть аккаунт?"
         android:textSize="15sp"
         android:textColor="@color/darkgray"
         android:layout_margin="5dp"/>
 
     <Button
-        android:id="@+id/signUpBtn"
+        android:id="@+id/signInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/links"
-        android:text="@string/signUp"/>
+        android:text="@string/signIn" />
 
 </LinearLayout>
