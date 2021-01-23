@@ -1,74 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/referralCard"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/background"
-    android:paddingTop="20dp"
-    android:paddingHorizontal="15dp">
+    android:background="@color/shadow"
+    android:paddingTop="20dp">
 
-    <TextView
+    <TextView style="@style/ReferralMainText"
+        android:paddingHorizontal="15dp"
         android:id="@+id/referralDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="28 окт, ср"
-        android:textSize="17sp"
-        android:textStyle="normal"
-        android:textColor="@color/darkgray"/>
+        android:text="28 окт, ср" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="8dp"
-        android:background="@color/white"
+        android:layout_marginHorizontal="15dp"
+        app:cardCornerRadius="5dp"
         >
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:paddingVertical="10dp"
+            android:paddingVertical="15dp"
             android:paddingHorizontal="15dp">
 
             <TextView
                 android:id="@+id/referralTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
                 android:text="08:50"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:textColor="@color/darkgray"
-                android:layout_marginVertical="5dp"/>
+                android:textColor="@color/darkgrey" />
 
             <TextView
                 android:id="@+id/doctor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Врач-нейрохихург Надежда Владимировна. Е"
+                android:text="Врач-нейрохихург"
                 android:textSize="15sp"
-                android:textStyle="normal"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/links"
-                android:layout_marginVertical="5dp"/>
+                android:layout_marginTop="10dp"/>
             <TextView
                 android:id="@+id/hospital"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Городская областная №5"
+                android:text="Свердловская областная клиническая больница №1"
                 android:textSize="15sp"
-                android:textStyle="normal"
-                android:textColor="@color/gray"
-                android:layout_marginVertical="5dp"/>
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/grey"
+                android:layout_marginTop="10dp"/>
             <TextView
                 android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Визит подтвержден"
                 android:textSize="15sp"
-                android:textStyle="normal"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/green"
-                android:layout_marginVertical="5dp"/>
+                android:layout_marginTop="15dp"/>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

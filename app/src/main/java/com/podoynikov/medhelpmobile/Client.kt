@@ -1,7 +1,5 @@
 package com.podoynikov.medhelpmobile
 
-import android.content.Context
-import com.github.kittinunf.fuel.core.FuelManager
 import com.github.kittinunf.fuel.core.Headers
 import com.github.kittinunf.fuel.core.ResponseResultOf
 import com.github.kittinunf.result.Result
@@ -9,27 +7,23 @@ import com.podoynikov.medhelpmobile.services.ApiService
 import kotlinx.coroutines.*
 import org.json.JSONObject
 import java.util.*
-import kotlin.collections.ArrayList
 
 class Client {
 
     companion object {
-        val instance = Client()
+        var instance : Client = Client()
+            private set
     }
+
     val locale : Locale = Locale("ru")
+    val timezone = TimeZone.getTimeZone("GMT")
 
-    var referrals: MutableList<Referral> = ArrayList()
+    var referrals: MutableList<Referral> = mutableListOf()
 
-//    var username: String? = null
-//        private set
-//    var password: String? = null
         private set
     var jwtToken: String? = null
         private set
-//    var lastName: String? = null
-//        private set
-//    var policyNumber: String? = null
-//        private set
+
     var isAuthenticated: Boolean = false
         private set
 
@@ -44,15 +38,16 @@ class Client {
                         .put("policy_number", _policyNumber)
                 )
 
-        val responseResultOf = ApiService.postRequestAsync(ApiService.Urls.registration, Headers(), null, bodyJson)
+        val responseResultOf = ApiService.postRequestAsync(ApiService.Urls.registration, Headers(), null, bodyJson.toString())
 
         withContext(Dispatchers.Main) {
             when (responseResultOf.third) {
                 is Result.Failure -> println("Registration Failure result:  ${responseResultOf.third.get()}")
                 is Result.Success -> {
-//                    username = _username
-//                    password = _password
-                    authorize(responseResultOf.third.get())
+                    print(responseResultOf.third.get())
+                    val parsedResponse = RegistrationResponse(JSONObject(responseResultOf.third.get()))
+                    if (parsedResponse.status == ResponseStatus.OK)
+                        authorize(parsedResponse.token)
                     println("Client registered!")
                 }
             }
@@ -66,16 +61,20 @@ class Client {
             .put("username", _username)
             .put("password", _password)
 
-        val responseResultOf = ApiService.postRequestAsync(ApiService.Urls.auth, Headers(), null, bodyJson)
+        val responseResultOf = ApiService.postRequestAsync(ApiService.Urls.auth, Headers(), null, bodyJson.toString())
 
         withContext(Dispatchers.Main) {
             when (responseResultOf.third) {
                 is Result.Failure -> println("Authenticate Failure result:  ${responseResultOf.third.get()}")
                 is Result.Success -> {
-//                    username = _username
-//                    password = _password
-                    authorize(responseResultOf.third.get())
+                    print(responseResultOf.third.get())
+                    val parsedResponse = RegistrationResponse(JSONObject(responseResultOf.third.get()))
+                    if (parsedResponse.status == ResponseStatus.OK)
+                        authorize(parsedResponse.token)
                     println("Client Authenticated!")
+//
+//                    authorize(responseResultOf.third.get())
+//                    println("Client Authenticated!")
                 }
             }
         }
@@ -86,5 +85,9 @@ class Client {
     fun authorize(token: String?){
         isAuthenticated = true
         jwtToken = token
+    }
+
+    fun logout() {
+        instance = Client()
     }
 }

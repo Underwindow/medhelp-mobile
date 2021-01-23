@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="32dp"
+    android:paddingHorizontal="25dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+        <LinearLayout
+            android:orientation="vertical"
+            android:gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView style="@style/PageHeader"
+                android:id="@+id/date"
+                android:text="28 февраля, воскресенье\n11:30" />
+
+            <TextView style="@style/ReferralMainText"
+                android:id="@+id/doctorSpecialty"
+                android:layout_marginTop="7dp"
+                android:text="Врач-нейрохихург" />
+
+            <LinearLayout
+                android:id="@+id/notifyAtTimePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp"
+                android:layout_gravity="left">
+
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_baseline_add_alert_24"
+                    app:tint="@color/links"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:id="@+id/notifyTimeTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Напомнить за день"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/links"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_marginTop="14dp"
+                android:text="Ожидаются мед.обследования: 2"
+                android:textSize="14sp"
+                android:textColor="@color/orange"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/analysesView"
+                android:background="?colorOnPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView style="@style/ReferralLightHeader"
+                android:layout_marginTop="23dp"
+                android:textColor="@color/headers"
+                android:text="ЛЕЧАЩИЙ ВРАЧ" />
+
+            <View style="@style/Divider"
+                android:layout_marginTop="7dp" />
+
+            <TextView style="@style/ReferralMainText"
+                android:id="@+id/doctorName"
+                android:layout_marginTop="10dp"
+                android:text="Гамаюнова Евгения Викторовна" />
+
+            <TextView style="@style/ReferralLightHeader"
+                android:layout_marginTop="23dp"
+                android:textColor="@color/headers"
+                android:text="АДРЕС" />
+
+            <View style="@style/Divider"
+                android:layout_marginTop="7dp" />
+
+            <TextView style="@style/ReferralMainText"
+                android:id="@+id/hospital"
+                android:layout_marginTop="10dp"
+                android:text="Свердловская областная клиническая больница №1" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

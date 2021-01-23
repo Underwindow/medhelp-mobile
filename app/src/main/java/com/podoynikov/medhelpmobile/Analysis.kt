@@ -1,9 +1,16 @@
 package com.podoynikov.medhelpmobile
 
-import java.util.*
-
 class Analysis (
         val id: Int,
-        val title: String,
+        val name: String,
         val isChecked: Boolean,
-        val file_id : Int?)
+        val file_id : Int?) {
+
+    var isClicked = false
+    val statusColor: Int get() =
+        if (isChecked)
+            R.color.green
+        else {
+            if (isClicked || file_id != null) R.color.grey else R.color.orange
+        }
+}

@@ -7,85 +7,61 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".LoginActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/medhelp"
-        android:textSize="30sp"
-        android:layout_margin="35dp"
-        android:textColor="@color/headers"/>
+    android:paddingHorizontal="45dp"
+    tools:context=".activities.LoginActivity">
 
-    <EditText
-        android:id="@+id/lastnameEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
+    <TextView style="@style/PageHeader"
         android:textAlignment="center"
-        android:textColor="@color/darkgray"
+        android:textColor="@color/black"
+        android:layout_marginVertical="20dp"
+        android:text="@string/medhelp" />
+
+    <EditText style="@style/FormEditText"
+        android:id="@+id/lastnameEt"
         android:inputType="textPersonName"
         android:hint="@string/input_lastname"/>
 
-    <EditText
+    <EditText style="@style/FormEditText"
         android:id="@+id/policyNumberEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:textAlignment="center"
-        android:textColor="@color/darkgray"
         android:inputType="numberDecimal"
         android:hint="@string/input_policy"/>
 
-    <EditText
+
+    <EditText style="@style/FormEditText"
         android:id="@+id/usernameEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:textAlignment="center"
-        android:textColor="@color/darkgray"
         android:inputType="textPersonName"
         android:hint="@string/username"/>
 
-    <EditText
+    <EditText style="@style/FormEditText"
         android:id="@+id/passwordEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:textAlignment="center"
-        android:textColor="@color/darkgray"
         android:inputType="textPassword"
         android:hint="@string/password"/>
 
-<!--    <EditText-->
-<!--        android:id="@+id/passwordEt"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:hint="Пароль"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="15"-->
-<!--        android:textAlignment="center"-->
-<!--        android:inputType="textPassword"/>-->
-    <Button
+    <Button style="@style/PrimaryButton"
         android:id="@+id/signUnBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="@color/links"
         android:text="@string/signUp"/>
 
+    <View style="@style/Divider"
+        android:layout_marginTop="15dp" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="уже есть аккаунт?"
-        android:textSize="15sp"
-        android:textColor="@color/darkgray"
-        android:layout_margin="5dp"/>
+        android:orientation="horizontal"
+        android:padding="5dp">
 
-    <Button
-        android:id="@+id/signInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/links"
-        android:text="@string/signIn" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Уже есть аккаунт?"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/darkgrey"/>
 
+        <Button style="@style/SecondaryButton"
+            android:id="@+id/signInBtn"
+            android:letterSpacing="0.0"
+            android:text="@string/signIn"/>
+
+    </LinearLayout>
 </LinearLayout>

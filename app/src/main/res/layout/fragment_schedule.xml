@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightgray"
-    android:paddingTop="20dp"
-    android:backgroundTint="@color/background"
-    android:paddingHorizontal="15dp">
+    android:background="@color/lightgrey"
+    android:paddingTop="32dp"
+    android:backgroundTint="@color/shadow"
+    android:paddingHorizontal="25dp">
 
 
     <LinearLayout
@@ -15,26 +15,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresher"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Приёмы"
-            android:textSize="30sp"
-            android:textStyle="normal"
-            android:textColor="@color/headers"/>
+            android:layout_height="wrap_content">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="false">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:background="?colorOnPrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    <TextView style="@style/PageHeader"
+                        android:text="Приёмы" />
 
-        </ScrollView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:background="?colorOnPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                </LinearLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </RelativeLayout>

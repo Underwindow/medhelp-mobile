@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/materialCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:background="@color/white"
+    app:strokeWidth="2dp"
+    app:strokeColor="@color/orange"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingVertical="15dp"
+        android:paddingHorizontal="15dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="0.1"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_up_arrow"
+                app:tint="@color/headers" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:layout_gravity="center|bottom"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="15sp"
+                android:textColor="@color/headers"
+                android:text=".PDF" />
+
+            <ImageView
+                android:id="@+id/checkmark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:layout_gravity="center|end"
+                app:srcCompat="@drawable/ic_checkmark"
+                app:tint="@color/green"/>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:visibility="gone"
+                style="?android:attr/progressBarStyle"/>
+
+        </LinearLayout>
+
+        <TextView style="@style/ReferralMainText"
+            android:id="@+id/analysisName"
+            android:text="УЗДГ артериального и венозного кровотока головы и шеи с функциональными пробами"
+            android:layout_marginTop="7dp"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

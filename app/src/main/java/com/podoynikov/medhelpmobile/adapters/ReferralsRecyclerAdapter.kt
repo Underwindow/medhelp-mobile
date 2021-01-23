@@ -5,15 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.podoynikov.medhelpmobile.Client
 import com.podoynikov.medhelpmobile.R
 import com.podoynikov.medhelpmobile.Referral
-import com.podoynikov.medhelpmobile.interfaces.ReferralClickListener
+import com.podoynikov.medhelpmobile.interfaces.ItemClickListener
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ReferralsRecyclerAdapter (context: Context, private var referrals: List<Referral>, private val referralClickListener: ReferralClickListener)
+class ReferralsRecyclerAdapter (context: Context, private var referrals: List<Referral>, private val referralClickListener: ItemClickListener)
     : RecyclerView.Adapter<ReferralsRecyclerAdapter.ViewHolder>(){
     val calendar : Calendar = Calendar.getInstance()
     private val inflater = LayoutInflater.from(context)
@@ -35,7 +36,7 @@ class ReferralsRecyclerAdapter (context: Context, private var referrals: List<Re
         val referral = referrals[position]
         holder.bind(referral, calendar, Client.instance.locale)
         holder.itemView.setOnClickListener {
-            referralClickListener.onReferralClickListener(referral)
+            referralClickListener.onItemClickListener(referral)
         }
     }
 
@@ -47,20 +48,24 @@ class ReferralsRecyclerAdapter (context: Context, private var referrals: List<Re
     class ViewHolder constructor(view: View): RecyclerView.ViewHolder(view) {
         private val dateView: TextView      = view.findViewById(R.id.referralDate)
         private val timeView: TextView      = view.findViewById(R.id.referralTime)
-        private val doctorView: TextView = view.findViewById(R.id.doctor)
+        private val doctorView: TextView    = view.findViewById(R.id.doctor)
         private val hospitalView: TextView  = view.findViewById(R.id.hospital)
         private val statusView: TextView    = view.findViewById(R.id.status)
 
         fun bind(referral: Referral, calendar: Calendar, locale: Locale) {
-            calendar.time   = referral.date
+            calendar.time = referral.date
+            val timezone = TimeZone.getTimeZone("GMT")
             val dateFormat = SimpleDateFormat("d MMM, EEE", locale)
-            val timeFormat = SimpleDateFormat("hh:mm", locale)
+                dateFormat.timeZone = timezone
+            val timeFormat = SimpleDateFormat("HH:mm", locale)
+                timeFormat.timeZone = timezone
 
             dateView.text       = dateFormat.format(calendar.time)
             timeView.text       = timeFormat.format(calendar.time)
             doctorView.text     = "${referral.doctorSpecialty} ${referral.doctorName}"
             hospitalView.text   = referral.medicalOrganization
             statusView.text     = referral.status
+            statusView.setTextColor(ContextCompat.getColor(statusView.context, referral.statusTextColor))
         }
     }
 }

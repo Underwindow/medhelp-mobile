@@ -11,7 +11,16 @@
     <string name="input_phone">Телефон</string>
     <string name="input_policy">Номер полиса</string>
     <string name="signIn">Войти</string>
-    <string name="signUp">зарегистрироваться</string>
+    <string name="signUp">Зарегистрироваться</string>
     <string name="username">Имя пользоватея</string>
     <string name="password">Пароль</string>
+    <string name="logout">Выйти</string>
+
+    <string name="logout_warning_list">
+        <ul>
+            <li>Не сможете пройти предварительную подготовку к приёму оналйн</li>
+            <li>Не будете получать актуальную информацию о приёмах</li>
+            <li>Потеряете возможность получать уведомления о ближайших приёмах</li>
+        </ul>
+    </string>
 </resources>

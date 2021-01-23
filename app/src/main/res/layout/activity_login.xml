@@ -1,71 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linear_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".LoginActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/medhelp"
-        android:textSize="30sp"
-        android:layout_margin="35dp"
-        android:textColor="@color/headers"/>
-
-    <EditText
-        android:id="@+id/usernameEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
+    android:paddingHorizontal="45dp"
+    tools:context=".activities.LoginActivity">
+    <TextView style="@style/PageHeader"
         android:textAlignment="center"
-        android:textColor="@color/darkgray"
+        android:textColor="@color/black"
+        android:layout_marginVertical="20dp"
+        android:text="@string/medhelp" />
+
+    <EditText style="@style/FormEditText"
+        android:id="@+id/usernameEt"
         android:inputType="textPersonName"
         android:hint="@string/username"/>
 
-    <EditText
+    <EditText style="@style/FormEditText"
         android:id="@+id/passwordEt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="15"
-        android:textAlignment="center"
-        android:textColor="@color/darkgray"
         android:inputType="textPassword"
         android:hint="@string/password"/>
 
-<!--    <EditText-->
-<!--        android:id="@+id/passwordEt"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:hint="Пароль"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:ems="15"-->
-<!--        android:textAlignment="center"-->
-<!--        android:inputType="textPassword"/>-->
-
-    <Button
+    <Button style="@style/PrimaryButton"
         android:id="@+id/signInBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="@color/links"
         android:text="@string/signIn" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="или"
-        android:textSize="15sp"
-        android:textColor="@color/darkgray"
-        android:layout_margin="5dp"/>
+    <View style="@style/Divider"
+        android:layout_marginTop="15dp" />
 
-    <Button
-        android:id="@+id/signUpBtn"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/links"
-        android:text="@string/signUp"/>
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ещё нет аккаунта?"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/darkgrey"/>
+
+        <Button style="@style/SecondaryButton"
+            android:id="@+id/signUpBtn"
+            android:letterSpacing="0.0"
+            android:text="@string/signUp"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>

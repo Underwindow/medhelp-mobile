@@ -1,6 +1,7 @@
 package com.podoynikov.medhelpmobile
 
 import java.util.*
+import com.podoynikov.medhelpmobile.R.color
 
 class Referral (
         val id: Int,
@@ -13,13 +14,17 @@ class Referral (
         val date: Date,
         val icdCode: String,
         val medicalOrganization: String,
-        val status: String){
+        val statusId: Int)
+{
+    var analyses = mutableListOf<Analysis>()
+    val status          = statuses[statusId].first
+    val statusTextColor = statuses[statusId].second
     companion object {
-        val statusesMap = mapOf(
-                0 to "Ожидаются мед.обследования",
-                1 to "На проверке",
-                2 to "Одобрено",
-                3 to "Отклонено"
+        val statuses = arrayOf(
+                Pair("Ожидаются мед.обследования", color.orange),
+                Pair("На проверке", color.orange),
+                Pair("Приём одобрен", color.green),
+                Pair("Приём отменён", color.red)
         )
     }
 }

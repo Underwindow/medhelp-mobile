@@ -1,8 +1,10 @@
 package com.podoynikov.medhelpmobile.extensions
 
+import com.podoynikov.medhelpmobile.Analysis
 import com.podoynikov.medhelpmobile.Referral
 import org.json.JSONArray
 import org.json.JSONObject
+import java.net.CacheResponse
 import java.text.SimpleDateFormat
 
 operator fun JSONArray.iterator(): Iterator<JSONObject>
@@ -20,5 +22,13 @@ fun parseReferralJSON(referralJSON : JSONObject, dateFormatter : SimpleDateForma
             date                = dateFormatter.parse(referralJSON.getString("date")),
             icdCode             = referralJSON.getString("icdCode"),
             medicalOrganization = referralJSON.getString("medicalOrganization"),
-            status              = Referral.statusesMap.getValue(referralJSON.getInt("status")))
+            statusId            = referralJSON.getInt("status"))
+}
+
+fun parseReferralAnalysesJSON(analysesJSON : JSONObject) : Analysis {
+    return Analysis(
+            id                  = analysesJSON.getInt("id"),
+            name                = analysesJSON.getString("name"),
+            isChecked           = analysesJSON.getBoolean("isChecked"),
+            file_id             = if (JSONObject.NULL == (analysesJSON.get("file_id"))) null else analysesJSON.getInt("file_id"))
 }

@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    android:paddingTop="20dp"
-    android:paddingHorizontal="15dp">
+    android:background="@color/shadow"
+    android:paddingTop="32dp"
+    android:paddingHorizontal="25dp">
 
 
     <LinearLayout
@@ -14,75 +14,81 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Выход"
-            android:textSize="30sp"
-            android:textStyle="normal"
-            android:textColor="@color/headers"/>
+        <TextView style="@style/PageHeader"
+            android:text="Выход" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:textColor="@color/titles"
-                android:text="Выйдя из учетной записи, Вы:" />
-
+            <TextView style="@style/ReferralMainText"
+                android:text="Покидая учетную запись, Вы:" />
+            <View style="@style/Divider"
+                android:layout_marginTop="7dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginHorizontal="5dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="17sp"
-                    android:textColor="@color/red"
+                    android:textSize="15sp"
+                    android:textColor="@color/headers"
                     android:textStyle="normal"
-                    android:layout_marginVertical="5dp"
-                    android:text="&#8226; Не сможете пройти предварительную подготовку к приёму" />
+                    android:layout_marginVertical="15dp"
+                    android:text="- Не сможете пройти предварительную подготовку к приёму оналйн" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="17sp"
-                    android:textColor="@color/red"
+                    android:textSize="15sp"
+                    android:textColor="@color/headers"
                     android:textStyle="normal"
-                    android:layout_marginVertical="5dp"
-                    android:text="&#8226; Не будете получать уведомления о приёмах" />
+                    android:layout_marginVertical="15dp"
+                    android:text="- Не будете получать актуальную информацию о приёмах" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="@color/headers"
+                    android:textStyle="normal"
+                    android:layout_marginVertical="15dp"
+                    android:text="- Потеряете возможность получать уведомления о ближайших приёмах" />
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="25dp"
+            android:gravity="center">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="17sp"
-                android:textColor="@color/titles"
-                android:text="Вы уверены, что хотите выйти?" />
+                android:orientation="vertical">
 
+                <TextView style="@style/ReferralMainText"
+                    android:layout_width="wrap_content"
+                    android:text="Вы действительно хотите выйти?" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
-                android:clickable="true"
-                android:text="Выйти из учетной записи"
-                android:textColor="@color/links"
-                android:textSize="17sp"
-                android:textStyle="normal" />
+                <View style="@style/Divider"
+                    android:layout_marginTop="7dp" />
+
+                <Button style="@style/PrimaryButton"
+                    android:id="@+id/logoutBtn"
+                    android:layout_marginHorizontal="0dp"
+                    android:backgroundTint="@color/black"
+                    android:text="@string/logout"/>
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

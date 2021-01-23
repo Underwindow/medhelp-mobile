@@ -1,4 +1,4 @@
-package com.podoynikov.medhelpmobile
+package com.podoynikov.medhelpmobile.activities
 
 import android.annotation.SuppressLint
 import android.widget.Toast
@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.coroutines.*
 import com.github.kittinunf.result.Result
+import com.podoynikov.medhelpmobile.Client
+import com.podoynikov.medhelpmobile.R
+import com.podoynikov.medhelpmobile.extensions.formIsValid
 import kotlinx.android.synthetic.main.activity_registration.*
 import kotlinx.android.synthetic.main.activity_registration.passwordEt
 import kotlinx.android.synthetic.main.activity_registration.signInBtn
@@ -25,6 +28,9 @@ class RegistrationActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("SHARED_PREF", Context.MODE_PRIVATE)
 
         signUnBtn.setOnClickListener {
+            if (!formIsValid(usernameEt, passwordEt, lastnameEt, policyNumberEt))
+                return@setOnClickListener
+
             val username        = usernameEt.text.toString()
             val password        = passwordEt.text.toString()
             val lastName        = lastnameEt.text.toString()
@@ -35,8 +41,8 @@ class RegistrationActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main) {
                     when (result) {
-                        is Result.Success -> onAuthSuccess()
-                        is Result.Failure -> Toast.makeText(applicationContext, "Что-то пошло не так", Toast.LENGTH_SHORT).show()
+                        is Result.Success -> onSuccessResponse()
+                        is Result.Failure -> Toast.makeText(applicationContext, "Ошибка сервера", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -48,12 +54,17 @@ class RegistrationActivity : AppCompatActivity() {
     }
 
     @SuppressLint("CommitPrefEdits")
-    fun onAuthSuccess() {
-        sharedPreferences.edit()
-                .putString("JWT_TOKEN", Client.instance.jwtToken)
-                .apply()
+    fun onSuccessResponse() {
+        if (Client.instance.isAuthenticated) {
+            sharedPreferences
+                    .edit()
+                    .putString("JWT_TOKEN", Client.instance.jwtToken)
+                    .apply()
 
-        startActivity(Intent(this, MainActivity::class.java))
-        finish()
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
+        else
+            Toast.makeText(applicationContext, "Ошибка. Проверьте введенные данные", Toast.LENGTH_SHORT).show()
     }
 }
